@@ -547,7 +547,7 @@ WDI_OBJS :=	$(WDI_CP_OBJS) \
 
 RIVA_INC :=	-I$(WLAN_ROOT)/riva/inc
 
-LINUX_INC :=	-Iinclude/linux
+LINUX_INC :=	-I$(srctree)/include/linux
 
 INCS :=		$(DXE_INC) \
 		$(HDD_INC) \
