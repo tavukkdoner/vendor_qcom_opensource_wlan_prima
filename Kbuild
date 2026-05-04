@@ -10,7 +10,7 @@ ifeq ($(KERNEL_BUILD),1)
 	# These are provided in Android-based builds
 	# Need to explicitly define for Kernel-based builds
 	MODNAME := wlan
-	WLAN_ROOT := $(src) 
+	WLAN_ROOT := $(CURDIR) 
     # drivers/staging/prima
 endif
 
