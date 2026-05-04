@@ -10,7 +10,8 @@ ifeq ($(KERNEL_BUILD),1)
 	# These are provided in Android-based builds
 	# Need to explicitly define for Kernel-based builds
 	MODNAME := wlan
-	WLAN_ROOT := drivers/staging/prima
+	WLAN_ROOT := $(src) 
+    # drivers/staging/prima
 endif
 
 # Flag to enable BlueTooth AMP feature
