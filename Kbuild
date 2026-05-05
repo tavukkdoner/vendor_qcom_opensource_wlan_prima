@@ -587,6 +587,7 @@ endif
 
 ccflags-y += $(INCS)
 ccflags-y += -fno-pic
+KBUILD_CPPFLAGS += $(INCS)
 
 CDEFINES :=	-DANI_BUS_TYPE_PLATFORM=1 \
 		-DANI_LITTLE_BYTE_ENDIAN \
