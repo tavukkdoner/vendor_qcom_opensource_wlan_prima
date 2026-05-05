@@ -130,6 +130,8 @@ WLAN_ROOT=$(KERNEL_TO_BUILD_ROOT_OFFSET)$(WLAN_BLD_DIR)/prima
 endif # ANDROID_BUILD_TOP
 endif # KERNEL_BUILD
 
+$(warning WLAN_ROOT=$(WLAN_ROOT))
+
 ifeq ($(CONFIG_PRIMA_WLAN_BTAMP),y)
 ############ BAP ############
 BAP_DIR :=	CORE/BAP
@@ -796,6 +798,9 @@ CDEFINES += -DWLAN_FEATURE_HOLD_RX_WAKELOCK
 endif
 
 KBUILD_CPPFLAGS += $(CDEFINES)
+
+$(warning WLAN_ROOT=$(WLAN_ROOT))
+$(warning INCS=$(INCS))
 
 # Module information used by KBuild framework
 obj-$(CONFIG_PRIMA_WLAN) += $(MODNAME).o
