@@ -131,6 +131,7 @@ endif # ANDROID_BUILD_TOP
 endif # KERNEL_BUILD
 
 $(warning WLAN_ROOT=$(WLAN_ROOT))
+WLAN_ROOT=$(srctree)/$(src)
 
 ifeq ($(CONFIG_PRIMA_WLAN_BTAMP),y)
 ############ BAP ############
