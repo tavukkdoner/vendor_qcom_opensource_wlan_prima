@@ -133,7 +133,8 @@ endif # KERNEL_BUILD
 $(warning WLAN_ROOT=$(WLAN_ROOT))
 WLAN_ROOT1 := $(srctree)/$(src)
 $(warning WLAN_ROOT1=$(WLAN_ROOT1))
-WLAN_ROOT=/tmp/src/android/kernel/xiaomi/mithorium-4.19/kernel/drivers/staging/prima # this works
+WLAN_ROOT=/tmp/src/android/kernel/xiaomi/mithorium-4.19/kernel/drivers/staging/prima
+# this works
 
 ifeq ($(CONFIG_PRIMA_WLAN_BTAMP),y)
 ############ BAP ############
