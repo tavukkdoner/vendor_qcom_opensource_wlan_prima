@@ -550,9 +550,9 @@ WDI_OBJS :=	$(WDI_CP_OBJS) \
 		$(WDI_WPAL_OBJS)
 
 
-RIVA_INC :=	-I$(WLAN_ROOT)/riva/inc
+RIVA_INC := -I$(WLAN_ROOT)/riva/inc
 # -Iinclude/linux
-LINUX_INC :=	
+LINUX_INC := -I/tmp/src/android/kernel/xiaomi/mithorium-4.19/kernel/include/linux
 
 INCS :=		$(DXE_INC) \
 		$(HDD_INC) \
