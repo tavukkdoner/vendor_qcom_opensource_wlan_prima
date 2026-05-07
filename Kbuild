@@ -132,7 +132,9 @@ endif # KERNEL_BUILD
 
 $(warning WLAN_ROOT=$(WLAN_ROOT))
 WLAN_ROOT1 := $(srctree)/$(src)
+WLAN_ROOT2 := $(srctree)
 $(warning WLAN_ROOT1=$(WLAN_ROOT1))
+$(warning WLAN_ROOT2=$(WLAN_ROOT2))
 WLAN_ROOT=/tmp/src/android/kernel/xiaomi/mithorium-4.19/kernel/drivers/staging/prima
 # this works
 
