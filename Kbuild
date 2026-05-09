@@ -583,8 +583,9 @@ ifeq ($(CONFIG_PRIMA_WLAN_BTAMP),y)
 OBJS += 	$(BAP_OBJS)
 endif
 
-EXTRA_CFLAGS += $(INCS)
-EXTRA_CFLAGS += -fno-pic
+ccflags-y += $(INCS)
+ccflags-y += -fno-pic
+KBUILD_CPPFLAGS += $(INCS)
 
 CDEFINES :=	-DANI_BUS_TYPE_PLATFORM=1 \
 		-DANI_LITTLE_BYTE_ENDIAN \
@@ -778,10 +779,10 @@ CDEFINES += -DEXISTS_MSM_SMSM
 endif
 
 # Fix build for GCC 4.7
-EXTRA_CFLAGS += $(call cc-disable-warning, maybe-uninitialized)
+ccflags-y += $(call cc-disable-warning, maybe-uninitialized)
 
 # Silence Clang warning
-EXTRA_CFLAGS += $(call cc-disable-warning, enum-conversion)
+ccflags-y += $(call cc-disable-warning, enum-conversion)
 
 ifeq ($(CONFIG_WLAN_OFFLOAD_PACKETS),y)
 CDEFINES += -DWLAN_FEATURE_OFFLOAD_PACKETS
