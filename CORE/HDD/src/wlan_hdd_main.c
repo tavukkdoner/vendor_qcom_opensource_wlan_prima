@@ -4206,7 +4206,6 @@ static int hdd_driver_command(hdd_adapter_t *pAdapter,
            hdd_checkandupdate_phymode(pAdapter, country_code);
 #endif
            ret = (int)sme_ChangeCountryCode(pHddCtx->hHal,
-                  (void *)(tSmeChangeCountryCallback)
                     wlan_hdd_change_country_code_callback,
                      country_code, pAdapter, pHddCtx->pvosContext, eSIR_TRUE, eSIR_TRUE);
            if (eHAL_STATUS_SUCCESS == ret)
@@ -14616,7 +14615,6 @@ int hdd_wlan_startup(struct device *dev )
       hdd_checkandupdate_phymode(pAdapter, country_code);
 #endif
       ret = sme_ChangeCountryCode(pHddCtx->hHal,
-                                  (void *)(tSmeChangeCountryCallback)
                                   wlan_hdd_change_country_code_callback,
                                   country_code,
                                   pAdapter, pHddCtx->pvosContext,
