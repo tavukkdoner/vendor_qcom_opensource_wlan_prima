@@ -9342,7 +9342,7 @@ eHalStatus sme_HandleChangeCountryCode(tpAniSirGlobal pMac,  void *pMsgBuf)
 #endif
    if( pMsg->changeCCCallback )
    {
-      pMsg->changeCCCallback((void *)pMsg->pDevContext);
+      ((tSmeChangeCountryCallback)(pMsg->changeCCCallback))((void *)pMsg->pDevContext);
    }
 
    return eHAL_STATUS_SUCCESS;
