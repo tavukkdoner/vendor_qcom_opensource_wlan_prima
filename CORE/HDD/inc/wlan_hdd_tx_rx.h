@@ -40,6 +40,7 @@
   -------------------------------------------------------------------------*/
 #include <wlan_hdd_includes.h>
 #include <vos_api.h>
+#include <linux/netdevice.h>
 #include <linux/skbuff.h>
 #include <wlan_qct_tl.h>
 
@@ -133,7 +134,7 @@
   @return         : NET_XMIT_DROP if packets are dropped
                   : NET_XMIT_SUCCESS if packet is enqueued succesfully
   ===========================================================================*/
-extern int hdd_ibss_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
+extern netdev_tx_t hdd_ibss_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
 
 /**============================================================================
   @brief hdd_hard_start_xmit() - Function registered with the Linux OS for
@@ -145,9 +146,9 @@ extern int hdd_ibss_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
   @return         : NET_XMIT_DROP if packets are dropped
                   : NET_XMIT_SUCCESS if packet is enqueued succesfully
   ===========================================================================*/
-extern int hdd_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
+extern netdev_tx_t hdd_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
 
-extern int hdd_mon_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
+extern netdev_tx_t hdd_mon_hard_start_xmit(struct sk_buff *skb, struct net_device *dev);
 /**============================================================================
   @brief hdd_tx_timeout() - Function called by OS if there is any
   timeout during transmission. Since HDD simply enqueues packet

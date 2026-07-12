@@ -376,7 +376,7 @@ static void hdd_hostapd_uninit (struct net_device *dev)
   @return         : NET_XMIT_DROP if packets are dropped
                   : NET_XMIT_SUCCESS if packet is enqueued succesfully
   ===========================================================================*/
-int hdd_hostapd_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
+netdev_tx_t hdd_hostapd_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
 {
     return 0;    
 }

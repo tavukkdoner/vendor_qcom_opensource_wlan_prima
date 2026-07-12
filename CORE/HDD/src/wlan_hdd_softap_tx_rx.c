@@ -329,7 +329,7 @@ error:
   @return         : NET_XMIT_DROP if packets are dropped
                   : NET_XMIT_SUCCESS if packet is enqueued succesfully
   ===========================================================================*/
-int __hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
+netdev_tx_t __hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
 {
    VOS_STATUS status;
    WLANTL_ACEnumType ac = WLANTL_AC_BE;
@@ -583,7 +583,7 @@ xmit_done:
    return os_status;
 }
 
-int hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
+netdev_tx_t hdd_softap_hard_start_xmit(struct sk_buff *skb, struct net_device *dev)
 {
 	int ret;
 	vos_ssr_protect(__func__);
