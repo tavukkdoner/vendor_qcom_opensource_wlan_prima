@@ -774,7 +774,8 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
                   indType, sizeof(WDI_RxBdType));
          if (WDI_RXBD_SAP_TX_STATS == indType) {
             pRxMetadata->fc = 1;
-            pClientData->receiveFrameCB(pClientData->pCallbackContext, pFrame);
+            vos_pkt_t *vosPkt = (vos_pkt_t *)pFrame;
+            pClientData->receiveFrameCB(pClientData->pCallbackContext, vosPkt);
             return eWLAN_PAL_STATUS_SUCCESS;
          }
       }
@@ -998,7 +999,8 @@ wpt_status WDTS_RxPacket (void *pContext, wpt_packet *pFrame, WDTS_ChannelType c
           WDTS_RxPacketDump((vos_pkt_t*)pFrame, pRxMetadata);
 
       /* Invoke Rx complete callback */
-      pClientData->receiveFrameCB(pClientData->pCallbackContext, pFrame);
+      vos_pkt_t *vosPkt = (vos_pkt_t *)pFrame;
+      pClientData->receiveFrameCB(pClientData->pCallbackContext, vosPkt);
   }
   else
   {

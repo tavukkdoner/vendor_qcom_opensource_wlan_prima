@@ -46,7 +46,10 @@
 #include "wlan_qct_pal_status.h"
 #include "wlan_qct_pal_packet.h"
 #include "wlan_qct_wdi.h"
+#include <vos_status.h>
    
+struct vos_pkt_t;
+typedef struct vos_pkt_t vos_pkt_t;
 
 typedef struct 
 {
@@ -260,7 +263,7 @@ WPT_STATIC WPT_INLINE WDI_DS_TxMetaInfoType* WDI_DS_ExtractTxMetaData (wpt_packe
 
 
 typedef void (*WDI_DS_TxCompleteCallback)(void *pContext, wpt_packet *pFrame);
-typedef void (*WDI_DS_RxPacketCallback) (void *pContext, wpt_packet *pFrame);
+typedef VOS_STATUS (*WDI_DS_RxPacketCallback) (void *pContext, vos_pkt_t *pFrame);
 typedef void (*WDI_DS_TxFlowControlCallback)(void *pContext, wpt_uint8 ac_mask);
 typedef void (*WDI_DS_RxLogCallback)(wpt_uint8 logType);
 

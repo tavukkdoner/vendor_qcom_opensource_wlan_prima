@@ -82,7 +82,7 @@ static v_VOID_t
 WDA_DS_TxCompleteCB
 (
  v_PVOID_t pvosGCtx, 
- v_PVOID_t pFrameDataBuff
+ wpt_packet *pFrameDataBuff
 );
 
 
@@ -246,8 +246,8 @@ VOS_STATUS WDA_DS_Register
   wdaContext->pfnTxCompleteCallback = pfnTxCompleteCallback;
 
   wdiStatus = WDI_DS_Register( wdaContext->pWdiContext,
-                               (WDI_DS_TxCompleteCallback)WDA_DS_TxCompleteCB,
-                               (WDI_DS_RxPacketCallback)pfnRxPacketCallback,
+                               WDA_DS_TxCompleteCB,
+                               pfnRxPacketCallback,
                                WDA_DS_TxFlowControlCallback,
                                WDA_DS_RxLogCallback,
                                pvosGCtx );
@@ -1243,7 +1243,7 @@ v_VOID_t
 WDA_DS_TxCompleteCB
 (
  v_PVOID_t pvosGCtx, 
- v_PVOID_t pFrameDataBuff
+ wpt_packet *pFrameDataBuff
 )
 {
   tWDA_CbContext*        wdaContext = NULL;
@@ -1271,12 +1271,13 @@ WDA_DS_TxCompleteCB
   }
 
   // extract metadata from PAL packet
-  pTxMetadata = WDI_DS_ExtractTxMetaData( (wpt_packet*)pFrameDataBuff );
+  pTxMetadata = WDI_DS_ExtractTxMetaData(pFrameDataBuff);
   
   if ( eWLAN_PAL_STATUS_SUCCESS == pTxMetadata->txCompleteStatus )
     vosStatus = VOS_STATUS_SUCCESS;
   else 
     vosStatus = VOS_STATUS_E_FAILURE;
 
-  wdaContext->pfnTxCompleteCallback( pvosGCtx, pFrameDataBuff, vosStatus );
+  vos_pkt_t *vosPkt = (vos_pkt_t *)pFrameDataBuff;
+  wdaContext->pfnTxCompleteCallback( pvosGCtx, vosPkt, vosStatus );
 }
