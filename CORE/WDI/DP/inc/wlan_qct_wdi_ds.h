@@ -48,8 +48,14 @@
 #include "wlan_qct_wdi.h"
 #include <vos_status.h>
    
+#ifndef _VOS_PKT_T_DEFINED
+#define _VOS_PKT_T_DEFINED
+
 struct vos_pkt_t;
 typedef struct vos_pkt_t vos_pkt_t;
+
+#endif
+
 
 typedef struct 
 {

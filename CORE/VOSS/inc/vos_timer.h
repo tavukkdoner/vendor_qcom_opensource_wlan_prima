@@ -48,6 +48,7 @@
 #include <vos_status.h>
 #include <vos_lock.h>
 #include <i_vos_timer.h>
+#include <linux/workqueue.h>
 
 #ifdef TIMER_MANAGER
 #include "wlan_hdd_dp_utils.h"
@@ -357,7 +358,7 @@ v_TIME_t vos_timer_get_system_time( v_VOID_t );
 
 v_BOOL_t vos_timer_is_initialized(vos_timer_t *timer);
 
-void vos_process_wd_timer(void);
-void vos_wdthread_init_timer_work(void *callbackptr);
+void vos_process_wd_timer(struct work_struct *work);
+void vos_wdthread_init_timer_work(work_func_t callbackptr);
 void vos_wdthread_flush_timer_work(void);
 #endif // #if !defined __VOSS_TIMER_H
